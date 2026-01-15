@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:jobspot/domain/constants/app_colors.dart';
-import 'package:jobspot/domain/constants/app_routes.dart';
-import 'package:jobspot/repository/widgets/custom_btn.dart';
-import 'package:jobspot/repository/widgets/custom_text_field.dart';
-import 'package:jobspot/repository/widgets/ui_helper.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+import '../../../domain/constants/app_colors.dart';
+import '../../../domain/constants/app_routes.dart';
+import '../../widgets/custom_btn.dart';
+import '../../widgets/custom_text_field.dart';
+import '../../widgets/ui_helper.dart';
+
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  bool isHiddenPassword = true;
-
+  final TextEditingController fullNameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 UiHelper.customText(
-                  text: "Welcome Back",
+                  text: "Create an Account",
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),
@@ -49,6 +49,19 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
             SizedBox(height: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustomTextField(
+                  controller: fullNameController,
+                  mWidth: 317,
+                  mHeight: 50,
+                  hinText: "Full Name",
+                  textInputType: TextInputType.name,
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -75,23 +88,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      AppRoutes.forgotPasswordScreen,
-                    );
-                  },
-                  child: Text(
-                    "Forgot Password?",
-                    style: TextStyle(fontSize: 12, color: Color(0XFF0D0140)),
-                  ),
-                ),
-              ],
-            ),
             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -99,10 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 CustomBtn(
                   text: "LOGIN",
                   onTap: () {
-                    Navigator.pushReplacementNamed(
-                      context,
-                      AppRoutes.homeScreen,
-                    );
+                    Navigator.pushNamed(context, AppRoutes.homeScreen);
                   },
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -131,15 +124,15 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "You don't have an account yet?",
+                  "Already have an account?",
                   style: TextStyle(fontSize: 12, color: Colors.black),
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, AppRoutes.signUpScreen);
+                    Navigator.pushReplacementNamed(context, AppRoutes.loginScreen);
                   },
                   child: Text(
-                    "Sign up",
+                    "Sign in",
                     style: TextStyle(
                       fontSize: 12,
                       color: AppColors.yellowColor,
