@@ -101,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onTap: () {
                     Navigator.pushReplacementNamed(
                       context,
-                      AppRoutes.homeScreen,
+                      AppRoutes.bottomNavigationScreen,
                     );
                   },
                   fontSize: 14,

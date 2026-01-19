@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:jobspot/repository/screens/bottomnavigation/bottom_navigation_screen.dart';
 import 'package:jobspot/repository/screens/forgotpassword/forgot_password.dart';
 import 'package:jobspot/repository/screens/home/home_screen.dart';
 import 'package:jobspot/repository/screens/login/login_screen.dart';
@@ -13,6 +14,7 @@ class AppRoutes {
   static const String loginScreen = "/login";
   static const String signUpScreen = "/signup";
   static const String forgotPasswordScreen = "/forgotPassword";
+  static const String bottomNavigationScreen = "/bottomNavigation";
 
   static Map<String, Widget Function(BuildContext)> getRoutes() => {
     splashScreen: (context) => SplashScreen(),
@@ -20,6 +22,7 @@ class AppRoutes {
     homeScreen: (context) => HomeScreen(),
     loginScreen: (context) => LoginScreen(),
     signUpScreen: (context) => SignUpScreen(),
-    forgotPasswordScreen : (context)=>ForgotPassword()
+    forgotPasswordScreen: (context) => ForgotPassword(),
+    bottomNavigationScreen: (context) => BottomNavigationScreen(),
   };
 }
